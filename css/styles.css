@@ -1,0 +1,563 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+:root {
+    /* Color System */
+    --base: #F4F4F0;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5A5A58;
+    --accent: #E93C3C;
+    --accent-hover: #1A1A1A;
+    --surface: #FFFFFF;
+    --border-dark: #1A1A1A;
+
+    /* Variables for Quiz Results */
+    --correct-bg: #E8F5E9;
+    --correct-text: #2E7D32;
+    --wrong-bg: #FFEBEE;
+    --wrong-text: #C62828;
+
+    /* Grid & Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 8rem;
+
+    /* Borders */
+    --border-thick: 3px solid var(--border-dark);
+    --border-thin: 1px solid var(--border-dark);
+
+    /* Transitions */
+    --transition-snappy: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Reset & Normalize */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--base);
+    color: var(--text-primary);
+    font-family: 'Lora', serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.brand-logo,
+.badge,
+.btn,
+.nav-links {
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.1;
+}
+
+h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    border-bottom: var(--border-thick);
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+p {
+    color: var(--text-secondary);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Layout & Structure */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) 5%;
+    border-bottom: var(--border-thick);
+    background: var(--base);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand-logo {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+}
+
+.nav-links a {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: var(--transition-snappy);
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5% var(--space-xl);
+}
+
+/* Hero Section */
+.hero {
+    padding: var(--space-xl) 0;
+    border-bottom: var(--border-thin);
+    margin-bottom: var(--space-lg);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    max-width: 600px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Story Grid & Cards */
+.story-category {
+    margin-bottom: var(--space-lg);
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-md);
+}
+
+.story-card {
+    background: var(--surface);
+    border: var(--border-thick);
+    position: relative;
+    transition: var(--transition-snappy);
+    display: flex;
+    flex-direction: column;
+}
+
+.story-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0px var(--border-dark);
+}
+
+.story-card.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    background: var(--base);
+}
+
+.story-image {
+    width: 100%;
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: var(--border-thick);
+    filter: grayscale(100%) contrast(1.2);
+    transition: var(--transition-snappy);
+}
+
+.story-card:hover .story-image {
+    filter: grayscale(0%) contrast(1);
+}
+
+.story-info {
+    padding: var(--space-md);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.badge {
+    background: var(--accent);
+    color: var(--surface);
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    align-self: flex-start;
+    margin-bottom: var(--space-sm);
+    border: 2px solid var(--border-dark);
+}
+
+.story-info h3 {
+    margin-bottom: var(--space-xs);
+}
+
+.story-info p {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    font-weight: 600;
+    color: var(--surface);
+    background-color: var(--accent);
+    border: var(--border-thick);
+    transition: var(--transition-snappy);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--accent-hover);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--border-dark);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--border-dark);
+}
+
+.btn-outline:hover {
+    background-color: var(--border-dark);
+    color: var(--surface);
+}
+
+.see-more-container {
+    text-align: center;
+    margin-top: var(--space-md);
+}
+
+/* Story Detail Page View */
+.story-container {
+    max-width: 800px;
+    margin: var(--space-lg) auto;
+}
+
+.story-header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.story-header .badge {
+    margin: 0 auto var(--space-sm);
+    display: inline-block;
+}
+
+.story-content {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    background: var(--surface);
+    padding: var(--space-lg);
+    border: var(--border-thick);
+    box-shadow: 8px 8px 0px var(--border-dark);
+    margin-bottom: var(--space-lg);
+}
+
+.story-content p {
+    margin-bottom: var(--space-md);
+    font-size: inherit;
+    color: inherit;
+    position: relative;
+}
+
+.story-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Interactive Translation Styling */
+.translatable {
+    cursor: pointer;
+    background-image: linear-gradient(to right, var(--text-primary) 50%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 6px 2px;
+    background-repeat: repeat-x;
+    transition: var(--transition-snappy);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.translatable:hover {
+    background-color: rgba(233, 60, 60, 0.1);
+}
+
+/* Tooltip Redesign */
+.translation-tooltip {
+    position: absolute;
+    background: var(--border-dark);
+    color: var(--surface);
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    border: 2px solid var(--accent);
+    z-index: 1000;
+    max-width: 320px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+}
+
+.translation-tooltip.visible {
+    opacity: 1;
+}
+
+.translation-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: var(--accent) transparent transparent transparent;
+}
+
+/* Loading Dots */
+.loading-dots:after {
+    content: '.';
+    animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+
+    0%,
+    20% {
+        color: rgba(0, 0, 0, 0);
+        text-shadow: .25em 0 0 rgba(0, 0, 0, 0), .5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    40% {
+        color: white;
+        text-shadow: .25em 0 0 rgba(0, 0, 0, 0), .5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    60% {
+        text-shadow: .25em 0 0 white, .5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    80%,
+    100% {
+        text-shadow: .25em 0 0 white, .5em 0 0 white;
+    }
+}
+
+/* Interactive Sections (Quiz & Vocab) */
+.interactive-section {
+    margin-top: var(--space-xl);
+    display: none;
+}
+
+.interactive-section h2 {
+    font-size: 2rem;
+    text-align: left;
+    border-bottom: var(--border-thin);
+    margin-bottom: var(--space-md);
+}
+
+/* Quiz UI Restyle */
+.quiz-section {
+    max-width: 800px;
+}
+
+.quiz-card {
+    background: var(--surface);
+    padding: var(--space-md);
+    border: var(--border-thick);
+    margin-bottom: var(--space-md);
+}
+
+.quiz-question {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+}
+
+.quiz-options {
+    display: grid;
+    gap: var(--space-xs);
+}
+
+.quiz-option {
+    font-family: 'Lora', serif;
+    padding: 1rem 1.5rem;
+    border: var(--border-thin);
+    background: transparent;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition-snappy);
+    color: var(--text-primary);
+}
+
+.quiz-option:hover:not(:disabled) {
+    background: var(--text-primary);
+    color: var(--surface);
+}
+
+.quiz-option.correct {
+    background: var(--correct-bg);
+    border-color: var(--correct-text);
+    color: var(--correct-text);
+    font-weight: 700;
+}
+
+.quiz-option.wrong {
+    background: var(--wrong-bg);
+    border-color: var(--wrong-text);
+    color: var(--wrong-text);
+}
+
+.quiz-feedback {
+    margin-top: var(--space-sm);
+    padding: var(--space-sm);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    display: none;
+    border: 2px solid transparent;
+}
+
+.quiz-feedback.success {
+    display: block;
+    background: var(--correct-bg);
+    color: var(--correct-text);
+    border-color: var(--correct-text);
+}
+
+.quiz-feedback.error {
+    display: block;
+    background: var(--wrong-bg);
+    color: var(--wrong-text);
+    border-color: var(--wrong-text);
+}
+
+/* Vocabulary Grid */
+.vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-sm);
+}
+
+.vocab-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-sm);
+    background: var(--surface);
+    border: var(--border-thick);
+    transition: var(--transition-snappy);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.vocab-item:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 2px 2px 0px var(--border-dark);
+}
+
+.vocab-de {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.vocab-en {
+    color: var(--text-secondary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .story-content {
+        padding: var(--space-md);
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background-color: #fff;
+    }
+
+    .navbar,
+    .quiz-section,
+    .vocabulary-section,
+    .translation-tooltip,
+    .btn {
+        display: none !important;
+    }
+
+    .story-container {
+        margin: 0rem auto;
+        max-width: none;
+        box-shadow: none;
+        border: none;
+    }
+
+    h1 {
+        font-size: 24pt;
+        margin-top: 0;
+    }
+
+    .story-content {
+        font-size: 14pt;
+        line-height: 1.6;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+    }
+
+    .translatable {
+        background-image: none;
+    }
+}
