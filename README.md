@@ -9,7 +9,7 @@
 
 **A beginner-friendly German reading app with graded stories, vocabulary, and quizzes**
 
-[🌐 Live Demo](https://your-netlify-url.netlify.app) · [📖 Stories](#stories) · [🚀 Getting Started](#getting-started) · [🤝 Contributing](#contributing)
+[🌐 Live Demo](https://learning-deutsch-with-anes.netlify.app) · [📖 Stories](#stories) · [🚀 Getting Started](#getting-started) · [🤝 Contributing](#contributing)
 
 </div>
 
