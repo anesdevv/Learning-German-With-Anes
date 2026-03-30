@@ -74,16 +74,6 @@ open index.html
 xdg-open index.html
 ```
 
-### Deploy to Netlify
-
-1. Push your code to GitHub
-2. Go to [Netlify](https://app.netlify.com)
-3. Click "Add new site" → "Import an existing project"
-4. Select your GitHub repository
-5. Netlify will auto-detect the HTML site and deploy it!
-
----
-
 ## Project Structure
 
 ```
